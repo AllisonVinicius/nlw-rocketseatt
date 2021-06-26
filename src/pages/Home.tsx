@@ -1,5 +1,6 @@
 import { useHistory } from "react-router-dom";
 import illustrationImg from "../assets/images/illustration.svg";
+import { firebase, auth } from "../services/firebase";
 import logo from "../assets/images/logo.svg";
 import googleIcon from "../assets/images/google-icon.svg";
 import { Button } from "../components/Button";
@@ -8,7 +9,11 @@ import "../styles/auth.scss";
 export function Home() {
   const history = useHistory(); //hook para nvegar
 
-  function navigateToNewRoom() {
+  function handleCreateRoom() {
+    const provider = new firebase.auth.GoogleAuthProvider(); //autenticacao com google
+    auth.sigInWithPopup(provider).then((result) => {
+      console.logo(result);
+    });
     history.push("/rooms/new");
   }
   return (
@@ -21,9 +26,9 @@ export function Home() {
       <main>
         <div className="main-content">
           <img src={logo} alt="lgoo" />
-          <button onClick={navigateToNewRoom} className="create-roow">
+          <button onClick={handleCreateRoom} className="create-roow">
             <img src={googleIcon} alt="logo goole" />
-            Crie sua Sala
+            Crie sua Sala com o google
           </button>
           <div className="separator"> Ou entre na sala</div>
           <form>
