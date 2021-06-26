@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import illustrationImg from "../assets/images/illustration.svg";
 import logo from "../assets/images/logo.svg";
 
@@ -16,13 +17,12 @@ export function NewRoom() {
         <div className="main-content">
           <img src={logo} alt="lgoo" />
           <h2>Criar uma nova sala</h2>
-
           <form>
             <input type="text" placeholder="Nome da sala" />
             <Button type="submit">Criar Sala</Button>
           </form>
           <p>
-            Quer entrar sala exitente<a href="/#">clique aqui</a>
+            Quer entrar sala exitente<Link to="/">clique aqui</Link>
           </p>
         </div>
       </main>
