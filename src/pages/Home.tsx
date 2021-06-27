@@ -1,19 +1,23 @@
 import { useHistory } from "react-router-dom";
 import illustrationImg from "../assets/images/illustration.svg";
-import { firebase, auth } from "../services/firebase";
 import logo from "../assets/images/logo.svg";
 import googleIcon from "../assets/images/google-icon.svg";
 import { Button } from "../components/Button";
+import { useAuth } from "../hooks/useAuth";
+
 import "../styles/auth.scss";
 
 export function Home() {
   const history = useHistory(); //hook para nvegar
+  // const { value, setValue } = useContext(); //recuperar o valor de um contesto para utilizar em outros compoenntes
+  //context permite compartilhar infor entre componentes e funcoes que podem modificar os valores
+  //o que vai refletir em todos os componentes usado.
+  const { user, signInWithGoogle } = useAuth();
 
-  function handleCreateRoom() {
-    const provider = new firebase.auth.GoogleAuthProvider(); //autenticacao com google
-    auth.sigInWithPopup(provider).then((result) => {
-      console.logo(result);
-    });
+  async function handleCreateRoom() {
+    if (!user) {
+      await signInWithGoogle();
+    }
     history.push("/rooms/new");
   }
   return (
