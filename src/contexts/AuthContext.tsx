@@ -18,6 +18,7 @@ type AuthContextType = {
   user: User | undefined;
   signInWithGoogle: () => Promise<void>; //toda assincrona devolve uma Promise(promessa de recebimento)
 };
+
 type AuthContextProviderProps = {
   children: ReactNode; //sempre que enviar componente do react do tipo children sempre reactNode
 };
