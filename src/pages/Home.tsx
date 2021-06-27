@@ -10,8 +10,7 @@ import "../styles/auth.scss";
 export function Home() {
   const history = useHistory(); //hook para nvegar
   // const { value, setValue } = useContext(); //recuperar o valor de um contesto para utilizar em outros compoenntes
-  //context permite compartilhar infor entre componentes e funcoes que podem modificar os valores
-  //o que vai refletir em todos os componentes usado.
+
   const { user, signInWithGoogle } = useAuth();
 
   async function handleCreateRoom() {
